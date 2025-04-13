@@ -176,6 +176,51 @@ function ab_save_astrologer_meta($post_id) {
     }
 }
 
+add_filter('woocommerce_order_item_display_meta_value', 'ab_format_booking_meta_display', 10, 2);
+
+function ab_format_booking_meta_display($display_value, $meta) {
+    $key = $meta->key;
+
+    if ($key === 'booking_date') {
+        $display_value = date('d M Y', strtotime($meta->value));
+    } elseif (in_array($key, ['booking_slot', 'booking_location', 'ab_user_name', 'ab_user_email', 'ab_user_phone'])) {
+        $display_value = esc_html($meta->value);
+    }
+
+    return $display_value;
+}
+
+add_filter('woocommerce_order_item_display_meta_key', 'ab_format_admin_meta_key', 10, 3);
+function ab_format_admin_meta_key($display_key, $meta, $item) {
+    if ($display_key === 'astrologer_id' && !current_user_can('manage_woocommerce')) {
+        return ''; // Hide label for non-admins
+    }
+
+    switch ($display_key) {
+        case 'booking_date': return 'Date';
+        case 'booking_slot': return 'Time Slot';
+        case 'booking_location': return 'Location';
+        case 'astrologer_name': return 'Astrologer';
+        case 'astrologer_id': return 'Astrologer ID';
+        case 'ab_user_name': return 'Customer Name';
+        case 'ab_user_email': return 'Email';
+        case 'ab_user_phone': return 'Phone';
+        default: return $display_key;
+    }
+}
+
+add_filter('woocommerce_order_item_get_formatted_meta_data', 'ab_hide_astrologer_id_for_non_admins', 10, 2);
+function ab_hide_astrologer_id_for_non_admins($formatted_meta, $order_item) {
+    // Only modify for non-admins
+    if (!current_user_can('manage_woocommerce')) {
+        foreach ($formatted_meta as $key => $meta) {
+            if (in_array($meta->key, ['astrologer_id','ab_user_name','ab_user_email','ab_user_phone'])) {
+                unset($formatted_meta[$key]);
+            }
+        }
+    }
+    return $formatted_meta;
+}
 
 
 

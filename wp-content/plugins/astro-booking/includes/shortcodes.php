@@ -38,7 +38,7 @@ function ab_render_astrologer_calendar($atts) {
                     <label>Time Slot</label>
                     <input type="text" id="ab-modal-slot" class="form-control" disabled>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Name</label>
                     <input type="text" id="ab-user-name" class="form-control" required>
                 </div>
@@ -49,7 +49,7 @@ function ab_render_astrologer_calendar($atts) {
                 <div class="form-group">
                     <label>Phone</label>
                     <input type="text" id="ab-user-phone" class="form-control" required>
-                </div>
+                </div> -->
                 <div class="form-group error-msg" id="booking_error" style="display:none;"></div>
                 </div>
                 <div class="modal-footer">
@@ -162,14 +162,14 @@ function ab_render_astrologer_calendar($atts) {
             const date = $.datepicker.formatDate('yy-mm-dd', selectedDate);
 
             const slot = $("#ab-modal-slot").val();
-            const name = $("#ab-user-name").val();
+            /*const name = $("#ab-user-name").val();
             const email = $("#ab-user-email").val();
             const phone = $("#ab-user-phone").val();
 
             if (!name || !email || !phone) {
                 $("#booking_error").html("All fields are required.").show();
                 return;
-            }
+            } */
 
             $.post(ab_ajax.ajaxurl, {
                 action: 'ab_submit_booking',
@@ -177,9 +177,9 @@ function ab_render_astrologer_calendar($atts) {
                 date: date,
                 location: selectedLocation,
                 slot: slot,
-                name: name,
-                email: email,
-                phone: phone
+                // name: name,
+                // email: email,
+                // phone: phone
             }, function(response) {
                 if (response.success) {
                     if(response.data.redirect_url){
