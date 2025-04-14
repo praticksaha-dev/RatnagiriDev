@@ -30,15 +30,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full_width">
+
                     <div class="hs_indx_title_left_wrapper">
-                        <h2><?php the_title(); ?></h2>
+<?php if(is_singular('horoscope')){ ?>
+    <h2><?php the_title(); ?>&nbsp;Daily Horoscope</h2>
+    <?php }else{ ?>
+        <h2><?php the_title(); ?></h2>  
+<?php } ?>
                     </div>
+
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  full_width">
                     <div class="hs_indx_title_right_wrapper">
                         <ul>
                             <li><a href="<?php echo home_url(); ?>">Home</a> &nbsp;&nbsp;&nbsp;> </li>
-                            <li><?php the_title(); ?></li>
+                            <li>
+                            <?php if(is_singular('horoscope')){ ?>
+                                <?php the_title(); ?>&nbsp;Daily Horoscope
+                                <?php }else{ ?>
+                                <?php the_title(); ?>
+                                <?php } ?>
+                            </li>
                         </ul>
                     </div>
                 </div>

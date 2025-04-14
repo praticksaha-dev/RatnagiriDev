@@ -178,7 +178,7 @@ if (have_posts()):
                                         <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>" class="img-responsive"
                                             alt="product">
                                     <?php } else { ?>
-                                        <img src="http://localhost/ratnagiriproject/wp-content/uploads/woocommerce-placeholder.png>"
+                                        <img src="http://localhost/ratnagiriproject/wp-content/uploads/woocommerce-placeholder.png"
                                             class="img-responsive" alt="product">
 
                                     <?php } ?>

@@ -1,7 +1,13 @@
 <?php /*Template Name: Layout: Contact Us*/
  get_header();
+ if (have_posts()):
+    while (have_posts()):
+        the_post();
  get_sidebar('banner');
 ?>
 
 
-<?php get_footer(); ?>
+<?php 
+endwhile;
+endif;
+get_footer(); ?>

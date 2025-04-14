@@ -68,6 +68,7 @@ function get_theme_value($field)
 require_once($post_type_path . 'clients.php');
 require_once($post_type_path . 'astrologers.php');
 require_once($post_type_path . 'services.php');
+require_once($post_type_path . 'horoscopes.php');
 /*--------------------------------------*/
 /* Theme Helper Functions
 /*--------------------------------------*/

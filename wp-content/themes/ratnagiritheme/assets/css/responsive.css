@@ -396,6 +396,13 @@
 		padding: 0 12px;
 		font-size: 12px;
 	}
+	.shop_wrapper .hs_shop_prodt_img_cont_wrapper .hs_shop_prodt_cart_btn{
+		padding-top: 7px;
+	}
+	.gemestone-para-text-2{
+		font-size: 12px;
+		line-height: 16px;
+	}
 	.shop_wrapper{
 		padding-bottom: 30px;
 	}
@@ -406,6 +413,11 @@
 	.about_page_wrapper {
 		padding-top: 60px;
 		padding-bottom: 0;
+	}
+	.shop_wrapper .hs_shop_prodt_img_cont_wrapper .gemestone-para-text{
+		margin-top: 8px;
+		font-size: 12px;
+		line-height: 16px;
 	}
 	.hs_astro_img_wrapper li{
 		width: 120px;
